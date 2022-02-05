@@ -1,0 +1,13 @@
+###########      System Information      ############
+set / system information location site-travee-rack-pos
+set / system name host-name PP5GS2ND1MUTLF01
+set / system name domain-name pprod.3gpp.mobi.orange.net
+set / system dns network-instance mgmt
+set / system dns server-list [1.1.1.1, 8.8.8.8, 8.8.4.4]
+set / system dns host-entry wallix-bastion { ipv4-address 10.140.7.7 ipv6-address 2001:db8:f411:d1::/48  }
+##########       OOB Management          ############
+set / system network-instance mgmt type ip-vrf
+set / system network-instance mgmt admin-state enable
+set / system network-instance mgmt description "Interface de management de %%%%"
+set / system network-instance mgmt interface mgmt0.0 {}
+set / system network-instance mgmt protocols linux export-routes true

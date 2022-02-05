@@ -1,0 +1,148 @@
+# topology documentation: http://containerlab.srlinux.dev/lab-examples/srl-ceos/
+name: ipfabric-5g
+prefix: "" 
+topology:
+  kinds:
+   srl:
+    image: ghcr.io/nokia/srlinux:21.6.4
+   linux:
+    image: frrouting/frr:8.1.0
+  nodes:
+      #    UPF1:
+      #      kind: linux
+      #      binds:
+      #       - ./configs/UPF/UPF1-bgpd.conf:/etc/frr/bgpd.conf
+      #       - ./configs/UPF/UPF1-daemons.conf:/etc/frr/daemons
+      #       - ./configs/UPF/UPF1-zebra.conf:/etc/frr/zebra.conf
+      #    FI1:
+      #      kind: linux
+      #      binds:
+      #       - ./configs/FI/FI1-bgpd.conf:/etc/frr/bgpd.conf
+      #       - ./configs/FI/FI1-daemons.conf:/etc/frr/daemons
+      #       - ./configs/FI/FI1-zebra.conf:/etc/frr/zebra.conf
+      #    BIOM:
+      #      kind: linux
+      #      binds:
+      #       - ./configs/BIOM/BIOM-bgpd.conf:/etc/frr/bgpd.conf
+      #       - ./configs/BIOM/BIOM-daemons.conf:/etc/frr/daemons
+      #       - ./configs/BIOM/BIOM-zebra.conf:/etc/frr/zebra.conf
+      ##    RBCI:
+#      kind: linux
+#      binds:
+#       - ./VNF/RBCI-bgpd.conf:/etc/frr/bgpd.conf
+#       - ./VNF/RBCI-daemons.conf:/etc/frr/daemons
+#       - ./VNF/RBCI-zebra.conf:/etc/frr/zebra.conf
+    PP5GS2ND1MUTLF01:
+      kind: srl
+      type: ixrd3
+      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF01.cli 
+      #    PP5GS2ND1MUTLF02:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF02.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF03:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF03.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF04:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF04.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF05:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF05.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF06:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF06.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF07:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF07.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF08:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF08.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF09:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF09.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTLF10:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF10.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTSP01:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTSP01.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTSP02:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTSP02.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTBL01:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTBL01.cli 
+      #      type: ixrd3
+      #    PP5GS2ND1MUTBL02:
+      #      kind: srl
+      #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTBL02.cli 
+      #      type: ixrd3
+      #
+      #  links:
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-1", "UPF1:eth1"]
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-2", "UPF1:eth2"]
+      #      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-1", "FI1:eth1"]
+      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-2", "FI1:eth2"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-1", "BIOM:eth1"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-2", "BIOM:eth2"]
+      ##    - endpoints: ["PP5GS2ND1MUTBL02:e1-1", "RBCI:eth1"]
+      ##    - endpoints: ["PP5GS2ND1MUTBL02:e1-2", "RBCI:eth2"]
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-31", "PP5GS2ND1MUTSP01:e1-3"]  #100.164.1.(X*2 -2) 100.164.1.(X*2 -1) X = SPINE ports
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-33", "PP5GS2ND1MUTSP01:e1-4"]  
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-32", "PP5GS2ND1MUTSP02:e1-3"] 
+      #    - endpoints: ["PP5GS2ND1MUTLF01:e1-34", "PP5GS2ND1MUTSP02:e1-4"]  
+      #    - endpoints: ["PP5GS2ND1MUTLF02:e1-31", "PP5GS2ND1MUTSP01:e1-5"]
+      #    - endpoints: ["PP5GS2ND1MUTLF02:e1-33", "PP5GS2ND1MUTSP01:e1-6"]
+      #    - endpoints: ["PP5GS2ND1MUTLF02:e1-32", "PP5GS2ND1MUTSP02:e1-5"]
+      #    - endpoints: ["PP5GS2ND1MUTLF02:e1-34", "PP5GS2ND1MUTSP02:e1-6"]
+      #    - endpoints: ["PP5GS2ND1MUTLF03:e1-31", "PP5GS2ND1MUTSP01:e1-7"]
+      #    - endpoints: ["PP5GS2ND1MUTLF03:e1-33", "PP5GS2ND1MUTSP01:e1-8"]
+      #    - endpoints: ["PP5GS2ND1MUTLF03:e1-32", "PP5GS2ND1MUTSP02:e1-7"]
+      #    - endpoints: ["PP5GS2ND1MUTLF03:e1-34", "PP5GS2ND1MUTSP02:e1-8"]
+      #    - endpoints: ["PP5GS2ND1MUTLF04:e1-31", "PP5GS2ND1MUTSP01:e1-9"]
+      #    - endpoints: ["PP5GS2ND1MUTLF04:e1-33", "PP5GS2ND1MUTSP01:e1-10"]
+      #    - endpoints: ["PP5GS2ND1MUTLF04:e1-32", "PP5GS2ND1MUTSP02:e1-9"]
+      #    - endpoints: ["PP5GS2ND1MUTLF04:e1-34", "PP5GS2ND1MUTSP02:e1-10"]
+      #    - endpoints: ["PP5GS2ND1MUTLF05:e1-31", "PP5GS2ND1MUTSP01:e1-11"]
+      #    - endpoints: ["PP5GS2ND1MUTLF05:e1-33", "PP5GS2ND1MUTSP01:e1-12"]
+      #    - endpoints: ["PP5GS2ND1MUTLF05:e1-32", "PP5GS2ND1MUTSP02:e1-11"]
+      #    - endpoints: ["PP5GS2ND1MUTLF05:e1-34", "PP5GS2ND1MUTSP02:e1-12"]
+      #    - endpoints: ["PP5GS2ND1MUTLF06:e1-31", "PP5GS2ND1MUTSP01:e1-13"]
+      #    - endpoints: ["PP5GS2ND1MUTLF06:e1-33", "PP5GS2ND1MUTSP01:e1-14"]
+      #    - endpoints: ["PP5GS2ND1MUTLF06:e1-32", "PP5GS2ND1MUTSP02:e1-13"]
+      #    - endpoints: ["PP5GS2ND1MUTLF06:e1-34", "PP5GS2ND1MUTSP02:e1-14"]
+      #    - endpoints: ["PP5GS2ND1MUTLF07:e1-31", "PP5GS2ND1MUTSP01:e1-15"]
+      #    - endpoints: ["PP5GS2ND1MUTLF07:e1-33", "PP5GS2ND1MUTSP01:e1-16"]
+      #    - endpoints: ["PP5GS2ND1MUTLF07:e1-32", "PP5GS2ND1MUTSP02:e1-15"]
+      #    - endpoints: ["PP5GS2ND1MUTLF07:e1-34", "PP5GS2ND1MUTSP02:e1-16"]
+      #    - endpoints: ["PP5GS2ND1MUTLF08:e1-31", "PP5GS2ND1MUTSP01:e1-17"]
+      #    - endpoints: ["PP5GS2ND1MUTLF08:e1-33", "PP5GS2ND1MUTSP01:e1-18"]
+      #    - endpoints: ["PP5GS2ND1MUTLF08:e1-32", "PP5GS2ND1MUTSP02:e1-17"]
+      #    - endpoints: ["PP5GS2ND1MUTLF08:e1-34", "PP5GS2ND1MUTSP02:e1-18"]
+      #    - endpoints: ["PP5GS2ND1MUTLF09:e1-31", "PP5GS2ND1MUTSP01:e1-19"]
+      #    - endpoints: ["PP5GS2ND1MUTLF09:e1-33", "PP5GS2ND1MUTSP01:e1-20"]
+      #    - endpoints: ["PP5GS2ND1MUTLF09:e1-32", "PP5GS2ND1MUTSP02:e1-19"]
+      #    - endpoints: ["PP5GS2ND1MUTLF09:e1-34", "PP5GS2ND1MUTSP02:e1-20"]
+      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-31", "PP5GS2ND1MUTSP01:e1-21"]
+      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-33", "PP5GS2ND1MUTSP01:e1-22"]
+      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-32", "PP5GS2ND1MUTSP02:e1-21"]
+      #    - endpoints: ["PP5GS2ND1MUTLF10:e1-34", "PP5GS2ND1MUTSP02:e1-22"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-31", "PP5GS2ND1MUTSP01:e1-23"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-33", "PP5GS2ND1MUTSP01:e1-24"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-32", "PP5GS2ND1MUTSP02:e1-23"]
+      #    - endpoints: ["PP5GS2ND1MUTBL01:e1-34", "PP5GS2ND1MUTSP02:e1-24"]
+      #    - endpoints: ["PP5GS2ND1MUTBL02:e1-31", "PP5GS2ND1MUTSP01:e1-25"]
+      #    - endpoints: ["PP5GS2ND1MUTBL02:e1-33", "PP5GS2ND1MUTSP01:e1-26"]
+      #    - endpoints: ["PP5GS2ND1MUTBL02:e1-32", "PP5GS2ND1MUTSP02:e1-25"]
+      #    - endpoints: ["PP5GS2ND1MUTBL02:e1-34", "PP5GS2ND1MUTSP02:e1-26"]
