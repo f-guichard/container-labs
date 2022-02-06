@@ -11,3 +11,36 @@ set / system network-instance mgmt admin-state enable
 set / system network-instance mgmt description "Interface de management de %%%%"
 set / system network-instance mgmt interface mgmt0.0 {}
 set / system network-instance mgmt protocols linux export-routes true
+set / system network-instance mgmt protocols linux export-neighbors true
+##########  Device access daemons & VRF  ###########
+set / system ssh-server network-instance mgmt admin-state enable
+set / system ssh-server network-instance mgmt source-address [ 1.1.1.1 1.1.1.2 ]
+set / system ssh-server network-instance tools admin-state enable
+set / system ssh-server network-instance tools source-address [ 2.1.1.1 2.1.1.2 ]
+######### regles RABC / autorization ################
+set / system aaa authorization role operator-deployer rule / action write
+set / system aaa authorization role operator-auditor rule / action read
+set / system aaa authorization role security-auditor rule / action read
+##########  Comptes M2M  ############################
+set / system aaa authentication user operator-auditor ssh-key [ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDU8ukYyG9ZrImqlGplAw2AJ74hT3zSu9ty+u7HBbYwwI2zXmA4b/TvAJQTVzYvUWTjTXElCSnLoCd6tMefNE6awJGTU375lG8/GYgq+soBPhUuHH+bdtCibrXbJXaczyaLI3uoiFAS/ntTXLujiydTTYprV7BcbbHAgjdI/7MjjV1mecUORJxQAgqvKiEO12boOB2nUOhIOT1eJ5IbwmMAPnjKS1vd1c8/YxFO7yAYM/j7OBVuh0hEzx7eDIUEEUcniw+7VFMqCkZ/HeHCzYJPZ531vKqymUvNUg1xj7QKXhLeKXm0Wmjo34P02A4BtqzwZVgaGBJn0c7TEi14U8Iz ] password reader
+set / system aaa authentication user operator-auditor role [ operator-auditor ]
+set / system aaa authentication user operator-deployer ssh-key [ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDU8ukYyG9ZrImqlGplAw2AJ74hT3zSu9ty+u7HBbYwwI2zXmA4b/TvAJQTVzYvUWTjTXElCSnLoCd6tMefNE6awJGTU375lG8/GYgq+soBPhUuHH+bdtCibrXbJXaczyaLI3uoiFAS/ntTXLujiydTTYprV7BcbbHAgjdI/7MjjV1mecUORJxQAgqvKiEO12boOB2nUOhIOT1eJ5IbwmMAPnjKS1vd1c8/YxFO7yAYM/j7OBVuh0hEzx7eDIUEEUcniw+7VFMqCkZ/HeHCzYJPZ531vKqymUvNUg1xj7QKXhLeKXm0Wmjo34P02A4BtqzwZVgaGBJn0c7TEi14U8Iz ]
+set / system aaa authentication user operator-deployer role [ operator-deployer ]
+set / system aaa authentication user security-auditor ssh-key [ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDU8ukYyG9ZrImqlGplAw2AJ74hT3zSu9ty+u7HBbYwwI2zXmA4b/TvAJQTVzYvUWTjTXElCSnLoCd6tMefNE6awJGTU375lG8/GYgq+soBPhUuHH+bdtCibrXbJXaczyaLI3uoiFAS/ntTXLujiydTTYprV7BcbbHAgjdI/7MjjV1mecUORJxQAgqvKiEO12boOB2nUOhIOT1eJ5IbwmMAPnjKS1vd1c8/YxFO7yAYM/j7OBVuh0hEzx7eDIUEEUcniw+7VFMqCkZ/HeHCzYJPZ531vKqymUvNUg1xj7QKXhLeKXm0Wmjo34P02A4BtqzwZVgaGBJn0c7TEi14U8Iz ] password reader
+set / system aaa authentication user security-auditor role [ security-auditor ]
+############## Services d'authentification ###########
+set / system aaa authentication authentication-method [ local tacacs-all ]
+set / system aaa authentication idle-timeout 60
+############ Banniere / motd   #######################
+set / system banner login-banner "Login banner message"
+set / system banner motd-banner "Penetrer dans un systeme de traitement automatise....."
+############   NTP ###################################
+set / system ntp admin-state enable
+set / system ntp network-instance mgmt
+set / system ntp server 10.171.50.52
+set / system ntp server 10.104.78.61
+set / system clock timezone Europe/Paris
+########## Legacy SNMP ##############################
+
+
+
