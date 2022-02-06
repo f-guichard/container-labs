@@ -41,6 +41,11 @@ set / system ntp server 10.171.50.52
 set / system ntp server 10.104.78.61
 set / system clock timezone Europe/Paris
 ########## Legacy SNMP ##############################
+set / system snmp community phare-reader permission r
+set / system snmp community phare-reader version v2c
+set / system snmp network-instance mgmt admin-state enable
+set / system snmp network-instance mgmt source-address [ 1.1.1.1 1.1.1.2 ]
+
 
 
 
