@@ -45,7 +45,8 @@ set / system snmp community phare-reader permission r
 set / system snmp community phare-reader version v2c
 set / system snmp network-instance mgmt admin-state enable
 set / system snmp network-instance mgmt source-address [ 1.1.1.1 1.1.1.2 ]
-
-
+########## Remote syslog / logsatsh #################
+set / system logging network-instance mgmt 
+set / system logging remote-server 10.107.99.241 subsystem lldp priority match-above warning 
 
 
