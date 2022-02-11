@@ -36,6 +36,7 @@ topology:
       kind: srl
       type: ixrd3
       startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF01.cli 
+      enforce-startup-config: true
       #    PP5GS2ND1MUTLF02:
       #      kind: srl
       #      startup-config: ./configs/FABRIC/startup-PP5GS2ND1MUTLF02.cli 
