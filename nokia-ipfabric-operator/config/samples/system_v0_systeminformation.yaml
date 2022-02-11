@@ -1,6 +1,51 @@
 apiVersion: system.k8s.nokia-ipfabric-operator-kb.fnetworks.tf/v0
 kind: SystemInformation
 metadata:
-  name: systeminformation-sample
+  name: systeminformation
 spec:
-  # TODO(user): Add fields here
+  ## facto system prefix
+  information:
+    location: "site-travee-rack-pos"
+    contact: "fguichard@fnetworks.tf"
+  name:
+     host-name: "PP5GS2ND1MUTLF01"
+     domain-name: "pprod.3gpp.mobi.orange.net"
+  dns:
+    network-instance: "mgmt"
+    server-list: 
+    - "1.1.1.1"
+    - "8.8.8.8"
+    - "8.8.4.4"
+    host-entry:
+      wallix-bastion:
+        ipv4-address: "10.140.7.7"
+        ipv6-address: "2001:db8:f411:d1::1"
+  banner:
+    login-banner: "Login banner message"
+    motd-banner: "Penetrer dans un systeme de traitement automatise....."
+  ntp:
+    admin-state: "disable"
+    network-instance: "mgmt"
+    #Check SR Linux system/ntp data model
+    servers:
+    - name: "10.171.50.52"
+    - name: "10.171.50.59"
+  clock:
+    timezone: "Europe/Paris"
+  snmp:
+    community: "phare-reader"
+    network-instance:
+      name: "tools" 
+      admin-state: "enable"
+      source-address:
+      - "10.163.2.178"
+      - "10.163.7.54"
+  logging:
+    network-instance: "tools"
+    remote-server: 
+    - name: "10.107.99.241"
+      subsystem: 
+      - name: "lldp" 
+        priority:
+          match-above: "warning"
+
