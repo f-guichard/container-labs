@@ -25,11 +25,30 @@ import (
 
 // SystemInformationSpec defines the desired state of SystemInformation
 type SystemInformationSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	Infos InformationSpec 	`json:"information"`
+	Name NameSpec 		`json:"name"`
+	Dns DnsSpec 		`json:"dns"`
+	Banner BannerSpec 	`json:"banner"`
+	Ntp NtpSpec 		`json:"ntp"`
+	Clock ClockSpec 	`json:"clock"`
+	Snmp SnmpSpec 		`json:"snmp"`
+	Logging LoggingSpec 	`json:"logging"`
+}
 
-	// Foo is an example field of SystemInformation. Edit systeminformation_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+type InformationSpec struct {
+	Location string 	`json:"location"`
+	Contact string		`json:"contact"`
+}
+
+type NameSpec struct {
+	Hostname string		`json:"host-name"`
+	DomainName string	`json:"domain-name"`
+}
+
+type DnsSpec struct {
+	NetworkInstance string `json:"network-instance"`
+	ServerList []string    `json:"server-list"`
+	HostEntry []HostEntrySpec `json:"host-entry"`
 }
 
 // SystemInformationStatus defines the observed state of SystemInformation
