@@ -1,0 +1,24 @@
+# permissions for end users to edit systeminformations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: systeminformation-editor-role
+rules:
+- apiGroups:
+  - system.k8s.nokia-ipfabric-operator-kb.fnetworks.tf
+  resources:
+  - systeminformations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - system.k8s.nokia-ipfabric-operator-kb.fnetworks.tf
+  resources:
+  - systeminformations/status
+  verbs:
+  - get

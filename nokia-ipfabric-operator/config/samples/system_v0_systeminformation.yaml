@@ -1,0 +1,6 @@
+apiVersion: system.k8s.nokia-ipfabric-operator-kb.fnetworks.tf/v0
+kind: SystemInformation
+metadata:
+  name: systeminformation-sample
+spec:
+  # TODO(user): Add fields here

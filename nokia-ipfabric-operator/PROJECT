@@ -1,0 +1,16 @@
+domain: k8s.nokia-ipfabric-operator-kb.fnetworks.tf
+layout:
+- go.kubebuilder.io/v3
+projectName: nokia-ipfabric-operator
+repo: nokia-ipfabric-operator-kb.fnetworks.tf
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: k8s.nokia-ipfabric-operator-kb.fnetworks.tf
+  group: system
+  kind: SystemInformation
+  path: nokia-ipfabric-operator-kb.fnetworks.tf/api/v0
+  version: v0
+version: "3"
