@@ -17,9 +17,9 @@ spec:
     - "8.8.8.8"
     - "8.8.4.4"
     host-entry:
-      wallix-bastion:
-        ipv4-address: "10.140.7.7"
-        ipv6-address: "2001:db8:f411:d1::1"
+    - name: "wallix-bastion"
+      ipv4-address: "10.140.7.7"
+      ipv6-address: "2001:db8:f411:d1::1"
   banner:
     login-banner: "Login banner message"
     motd-banner: "Penetrer dans un systeme de traitement automatise....."

@@ -25,18 +25,18 @@ import (
 
 // SystemInformationSpec defines the desired state of SystemInformation
 type SystemInformationSpec struct {
-	Infos InformationSpec 	`json:"information"`
-	Name NameSpec 		`json:"name"`
-	Dns DnsSpec 		`json:"dns"`
-	Banner BannerSpec 	`json:"banner"`
-	Ntp NtpSpec 		`json:"ntp"`
-	Clock ClockSpec 	`json:"clock"`
-	Snmp SnmpSpec 		`json:"snmp"`
-	Logging LoggingSpec 	`json:"logging"`
+	Infos InformationSpec	`json:"information"`
+	Name NameSpec		`json:"name"`
+	Dns DnsSpec		`json:"dns"`
+	Banner BannerSpec	`json:"banner"`
+	Ntp NtpSpec		`json:"ntp"`
+	Clock ClockSpec		`json:"clock"`
+	Snmp SnmpSpec		`json:"snmp"`
+	Logging LoggingSpec	`json:"logging"`
 }
 
 type InformationSpec struct {
-	Location string 	`json:"location"`
+	Location string		`json:"location"`
 	Contact string		`json:"contact"`
 }
 
@@ -49,6 +49,61 @@ type DnsSpec struct {
 	NetworkInstance string `json:"network-instance"`
 	ServerList []string    `json:"server-list"`
 	HostEntry []HostEntrySpec `json:"host-entry"`
+}
+
+type HostEntrySpec struct {
+	Name string		`json:"name"`
+	Ipv4Address string	`json:"ipv4-address"`
+	Ipv6Address string	`json:"ipv6-address"`
+}
+
+type BannerSpec struct {
+	LoginBanner string	`json:"login-banner"`
+	MotdBanner string	`json:"motd-banner"`
+}
+
+type NtpSpec struct {
+	AdminState string	`json:"admin-state"`
+	NetworkInstance string	`json:"network-instance"`
+	Servers	[]ServersSpec	`json:"server"`
+}
+
+type ServersSpec struct {
+	ServerName string	`json:"name"`
+}
+
+type ClockSpec struct {
+	TimeZone string		`json:"timezone"`
+}
+
+type SnmpSpec struct {
+	Community string	`json:"community"`
+	SnmpIns SnmpInsSpec	`json:"network-instance"`
+}
+
+type SnmpInsSpec struct {
+	Name string		`json:"name"`
+	AdminState string	`json:"admin-state"`
+	SrcAddresses []string	`json:"source-address"`
+}
+
+type LoggingSpec struct {
+	NetIns string		`json:"network-instance"`
+	RemoteServ []RmtSrvSpec	`json:"remote-server"`
+}
+
+type RmtSrvSpec struct {
+	Name string		`json:"name"`
+	Subsystem []SubSysSpec	`json:"subsystem"`
+}
+
+type SubSysSpec struct {
+	Name string		`json:"name"`
+	Priority PrioritySpec	`json:"priority"`
+}
+
+type PrioritySpec struct {
+	MatchAbove string	`json:"match-above"`
 }
 
 // SystemInformationStatus defines the observed state of SystemInformation
